@@ -1,0 +1,41 @@
+When limits-service starts up, it fetches configuration from,
+http://localhost:8888/limits-service/default i.e
+When limit-service starts up, it executes this url on cloud config server and in response - 
+It gets this
+
+{
+"name": "limits-service",
+"profiles": [
+"default"
+],
+"label": null,
+"version": "ee2ebd60c042b0e2686465bd328a1e911ca0e282",
+"state": null,
+"propertySources": [
+{
+"name": "file:///C:/Users/mayank.g.pandey/Microservices/git-localconfig-repo/limits-service.properties",
+"source": {
+"limits-service.minimum": "300",
+"limits-service.maximum": "997"
+}
+}
+]
+}
+
+From this it picks up the min max value.
+
+Values in git repository have priority over that in application.properties
+
+-----------------------------------------------------------------------------------------
+Identify which application is using the port
+
+1. netstat -ano | findstr :<port>
+2. From the O/P you'll get pid. Use that to check in task manager to know the app name
+	The output you provided indicates that there is a process running on port 8000. The process ID (PID) associated with that port is 4.
+
+To determine the application corresponding to PID 4, you can use the following steps based on your operating system:
+
+Windows:
+
+Open Task Manager and go to the "Processes" tab. Enable the "PID" column by right-clicking on the column headers and selecting "PID" to be displayed. Look for the process with PID 4 in the list, and you should be able to see the corresponding application name in the "Image Name" column.
+----------------------------------------------------------------------------------------
